@@ -1,0 +1,11 @@
+multidate <- function(data, formats){
+      a<-list()
+      for(i in 1:length(formats)){
+            a[[i]]<- as.Date(data,format=formats[i])
+            a[[1]][!is.na(a[[i]])]<-a[[i]][!is.na(a[[i]])]
+      }
+      a[[1]]
+}
+
+Base_traza$fecha_de_ingreso2 <- multidate(Base_traza$fecha_de_ingreso, 
+                                  c("%m/%d/%Y","%d.%m.%Y","%d %b %y", "%Y-%m-%d", "%d/%m/%Y"))
